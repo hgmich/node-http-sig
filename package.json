@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lerna": "^6.5.1"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build": "lerna run build",
+    "test": "lerna run test"
+  }
+}

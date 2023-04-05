@@ -1,0 +1,22 @@
+{
+  "name": "@private/local-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "precommit": "lint-staged",
+    "fmt": "prettier -w './**/*.js(on)?'"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7"
+  },
+  "lint-staged": {
+    "./**/*.js(on)?": [
+      "prettier -c"
+    ]
+  }
+}
