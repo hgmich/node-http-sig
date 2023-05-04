@@ -33,7 +33,7 @@ export class SignResponseInterceptor implements NestInterceptor {
     ])
 
     // Terminate if the request isn't being signed
-    if (endpointOpts && !endpointOpts.signResponse) return next.handle()
+    if (!endpointOpts || !endpointOpts.signResponse) return next.handle()
 
     const req = context.switchToHttp().getRequest<RawBodyRequest<Request>>()
 
