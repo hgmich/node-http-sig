@@ -8,7 +8,7 @@ import { Request } from 'express'
 import { SIGNATURE_INST } from '../constants'
 import { SIGNED_KEY, SignedEndpointOptions } from '../decorators/signed.decorator'
 import { requestMessageWrapper } from '../message-wrappers'
-import { getLastOrOnly, getSignatureString } from '../common'
+import { getLastOrOnly } from '../common'
 
 const isEmptyBody = (body: any): boolean => !body || (typeof body === 'object' && Object.keys(body).length === 0)
 
@@ -47,14 +47,12 @@ export class VerifySignatureGuard implements CanActivate {
       throw new ConfigurationError('rawBody missing from request (set rawBody: true in NestFactory.create)')
     }
 
-    const sigStr = getSignatureString(req)
-
-    if (!sigStr) throw new VerificationError('signature not present on request')
-
     // Prepare signature for verification
-    const signature = Signature.fromHeader(sigStr)
+    const messageCtx = requestMessageWrapper(req)
+    const signature = messageCtx.getSignature()
+    if (!signature) throw new VerificationError('signature not present on request')
+
     const key = await this.sig.getKey(signature.keyId)
-    const messageCtx = key.createMessageContext(requestMessageWrapper(req))
 
     // Verify signature
     const sigVerified = key.verifyRequest(messageCtx)

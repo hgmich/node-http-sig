@@ -17,8 +17,8 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { SIGNED_KEY, SignedEndpointOptions } from '../decorators/signed.decorator'
 import { SIGNATURE_INST } from '../constants'
-import { getLastOrOnly, getSignatureString } from '../common'
-import { responseMessageWrapper } from '../message-wrappers'
+import { getLastOrOnly } from '../common'
+import { requestMessageWrapper, responseMessageWrapper } from '../message-wrappers'
 
 const isJson = (s: any) => typeof s === 'object' && !Buffer.isBuffer(s) && !(s instanceof StreamableFile)
 
@@ -38,15 +38,15 @@ export class SignResponseInterceptor implements NestInterceptor {
     const req = context.switchToHttp().getRequest<RawBodyRequest<Request>>()
 
     // The signature is needed because the default action is to respond with the same keyId as received
-    const sigStr = getSignatureString(req)
-
+    const messageCtx = requestMessageWrapper(req)
+    const signature = messageCtx.getSignature()
     let keyId = endpointOpts?.keyId
-    // Only try to backfill keyId if the signature was actually verified
+
+    // Only try to backfill keyId if the signature is actually intended to be verified
     // and if an override is not provided
-    if ((!endpointOpts || endpointOpts.verifyRequest) && sigStr && !keyId) {
+    if ((!endpointOpts || endpointOpts.verifyRequest) && signature && !keyId) {
       // Default to using same keyId as provided in request
-      const sig = Signature.fromHeader(sigStr)
-      keyId = sig.keyId
+      keyId = signature.keyId
     }
     if (!keyId) throw new ConfigurationError('unable to determine keyId for request')
 
@@ -85,7 +85,7 @@ export class SignResponseInterceptor implements NestInterceptor {
       outData = new StreamableFile(outData)
     }
 
-    const msgCtx = key.createMessageContext(responseMessageWrapper(res))
+    const msgCtx = responseMessageWrapper(res)
     const signature = key.signResponse(msgCtx)
 
     res.setHeader('Signature', signature)

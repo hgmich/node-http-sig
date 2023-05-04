@@ -1,11 +1,11 @@
 // Copyright (c) Michael Holmes
 // SPDX-License-Identifier: MIT
 
-import { HttpMessage } from '@holmesmr/http-sig'
+import { createMessageContext, MessageContext } from '@holmesmr/http-sig'
 import { Request, Response } from 'express'
 
-export function requestMessageWrapper(req: Request): HttpMessage {
-  return {
+export function requestMessageWrapper(req: Request): MessageContext {
+  return createMessageContext({
     requestTarget: { method: req.method, path: req.path },
     getHeader(name: string) {
       const header = req.headers[name]
@@ -15,11 +15,11 @@ export function requestMessageWrapper(req: Request): HttpMessage {
 
       return header
     },
-  }
+  })
 }
 
-export function responseMessageWrapper(res: Response): HttpMessage {
-  return {
+export function responseMessageWrapper(res: Response): MessageContext {
+  return createMessageContext({
     getHeader(name: string) {
       const header = res.getHeader(name)
       if (typeof header === 'string') {
@@ -30,5 +30,5 @@ export function responseMessageWrapper(res: Response): HttpMessage {
 
       return header
     },
-  }
+  })
 }
