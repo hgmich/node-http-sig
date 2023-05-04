@@ -2,19 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 import { SignatureKeyManager } from './SignatureKeyManager'
+import { HttpMessage, MessageContext } from './MessageContext'
 
-import {
-  ConfigurationError,
-  FixedKey,
-  HttpSigParams,
-  HttpSigVersion,
-  KeyConfig,
-  KeyId,
-  KeyLookup,
-  KeyLookupFunction,
-  SignatureAlgorithm,
-  SignatureOptions,
-} from './types'
+import { HttpSigParams } from './types'
 
 /**
  * Creates a new `SignatureKeyManager` instance using the provided
@@ -29,6 +19,17 @@ import {
  */
 export function signatures(config: HttpSigParams): SignatureKeyManager {
   return SignatureKeyManager.create(config)
+}
+
+/**
+ * Create a new MessageContext for handing signing or verifying
+ * a given HTTP message.
+ *
+ * @param message A HttpMessage instance wrapping an underlying
+ *                HTTP message from a library.
+ */
+export function createMessageContext(message: HttpMessage): MessageContext {
+  return new MessageContext(message)
 }
 
 export default signatures

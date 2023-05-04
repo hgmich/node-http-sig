@@ -23,6 +23,7 @@ import {
 } from './types'
 import { InternalKeyConfig, SignatureKey } from './SignatureKey'
 import { HmacSignatureKey } from './HmacSignatureKey'
+import { HttpMessage, MessageContext } from './MessageContext'
 
 type ResolvedOptions = RequiredSignatureOptions & Required<SignatureOptions>
 

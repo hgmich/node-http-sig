@@ -29,7 +29,7 @@ type MessageContextOptions = {
  * The primary use of `MessageContext` is to build a correct canonical string for the
  * headers in an abstract way. You do not need to implement or interact with
  * `MessageContext` directly except to create instances
- * through `SignatureKey.createMessageContext()`.
+ * through the `createMessageContext` function.
  */
 export class MessageContext {
   private options: MessageContextOptions

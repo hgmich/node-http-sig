@@ -57,17 +57,6 @@ export abstract class SignatureKey {
   ) {}
 
   /**
-   * Create a new MessageContext for handing signing or verifying
-   * a given HTTP message.
-   *
-   * @param message A HttpMessage instance wrapping an underlying
-   *                HTTP message from a library.
-   */
-  createMessageContext(message: HttpMessage): MessageContext {
-    return new MessageContext(message)
-  }
-
-  /**
    * Create a Digest header for the given Buffer representing the
    * body of an HTTP message.
    *
