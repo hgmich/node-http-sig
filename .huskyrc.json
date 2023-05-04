@@ -1,3 +1,3 @@
 {
-  "pre-commit": "lerna run precommit --concurrency 1 --since"
+  "pre-commit": "lerna run build --concurrency 1 --since && lerna run precommit --concurrency 1 --since",
 }
