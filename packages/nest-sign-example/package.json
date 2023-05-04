@@ -1,6 +1,6 @@
 {
   "name": "nest-sign-example",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "",
   "author": "Michael Holmes <holmesmr@users.github.com>",
   "private": true,
@@ -23,7 +23,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@holmesmr/nest-http-sig": "^0.1.0-alpha.0",
+    "@holmesmr/nest-http-sig": "^0.1.0-alpha.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",

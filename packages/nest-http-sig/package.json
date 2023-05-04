@@ -1,6 +1,6 @@
 {
   "name": "@holmesmr/nest-http-sig",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "Michael Holmes <holmesmr@users.github.com>",
   "license": "MIT",
   "dependencies": {
-    "@holmesmr/http-sig": "^0.1.0-alpha.0",
+    "@holmesmr/http-sig": "^0.1.0-alpha.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0"
   },
