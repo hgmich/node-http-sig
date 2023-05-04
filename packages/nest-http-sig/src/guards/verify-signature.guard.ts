@@ -10,6 +10,8 @@ import { SIGNED_KEY, SignedEndpointOptions } from '../decorators/signed.decorato
 import { requestMessageWrapper } from '../message-wrappers'
 import { getLastOrOnly, getSignatureString } from '../common'
 
+const isEmptyBody = (body: any): boolean => !body || (typeof body === 'object' && Object.keys(body).length === 0)
+
 @Injectable()
 export class VerifySignatureGuard implements CanActivate {
   constructor(@Inject(SIGNATURE_INST) private sig: SignatureKeyManager, private reflector: Reflector) {}
@@ -41,8 +43,9 @@ export class VerifySignatureGuard implements CanActivate {
     }
 
     // Detect incorrect configuration before proceeding
-    if (req.body && !req.rawBody)
+    if (!isEmptyBody(req.body) && !req.rawBody) {
       throw new ConfigurationError('rawBody missing from request (set rawBody: true in NestFactory.create)')
+    }
 
     const sigStr = getSignatureString(req)
 
