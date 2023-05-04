@@ -1,0 +1,12 @@
+{
+  "extends": "../local-config/tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "lib"
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"]
+}
