@@ -1,7 +1,14 @@
 // Copyright (c) Michael Holmes
 // SPDX-License-Identifier: MIT
 
-import { ConfigurationError, signatures, SignatureKey, VerificationError, HttpMessage } from '@holmesmr/http-sig'
+import {
+  ConfigurationError,
+  signatures,
+  SignatureKey,
+  VerificationError,
+  createMessageContext,
+  MessageContext,
+} from '@holmesmr/http-sig'
 import { NextFunction, Request, Response } from 'express'
 import { HttpSigHandler, HttpSigMiddlewareParams } from './types'
 
@@ -12,8 +19,8 @@ type RequestVerifyContext = {
   key: SignatureKey
 }
 
-export function requestMessageWrapper(req: Request): HttpMessage {
-  return {
+export function requestMessageWrapper(req: Request): MessageContext {
+  return createMessageContext({
     requestTarget: { method: req.method, path: req.path },
     getHeader(name: string) {
       const header = req.headers[name]
@@ -23,11 +30,11 @@ export function requestMessageWrapper(req: Request): HttpMessage {
 
       return header
     },
-  }
+  })
 }
 
-export function responseMessageWrapper(res: Response): HttpMessage {
-  return {
+export function responseMessageWrapper(res: Response): MessageContext {
+  return createMessageContext({
     getHeader(name: string) {
       const header = res.getHeader(name)
       if (typeof header === 'string') {
@@ -38,7 +45,7 @@ export function responseMessageWrapper(res: Response): HttpMessage {
 
       return header
     },
-  }
+  })
 }
 
 function getLastOrOnly<T>(xs: T | T[] | undefined): T | undefined {
@@ -85,7 +92,7 @@ export function httpSignatures(config: HttpSigMiddlewareParams): HttpSigHandler 
 
           finalRes.set('Digest', key.createDigestHeader(buf))
 
-          const ctx = key.createMessageContext(responseMessageWrapper(res))
+          const ctx = responseMessageWrapper(res)
           const sig = key.signResponse(ctx)
 
           finalRes.set('Signature', sig)
