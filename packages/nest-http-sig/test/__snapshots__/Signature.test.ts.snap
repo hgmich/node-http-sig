@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signature enforces correct whitespacing of headers: no-double-space 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-form-feed 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-leading-space 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-nbsp 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-tab-space 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-trailing-space 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces correct whitespacing of headers: no-vertical-space 1`] = `"malformed header list in signature string"`;
+
+exports[`Signature enforces non-quoting of decimal fields 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces non-quoting of integer fields 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: empty-field 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: leading-decimal 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: multiple-decimal 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: negative-decimal 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: non-numeric 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: solo-decimal 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for decimal fields: trailing-decimal 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for integer fields: empty-field 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for integer fields: leading-zero 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for integer fields: negative-integer 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces number format for integer fields: non-numeric 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces quoting of string fields 1`] = `"malformed signature string"`;
+
+exports[`Signature enforces required fields: missing-keyId 1`] = `"required field \`keyId\` not present in signature"`;
+
+exports[`Signature enforces required fields: missing-signature 1`] = `"required field \`signature\` not present in signature"`;
+
+exports[`Signature forbids duplicate fields 1`] = `"duplicated field keyId present in signature"`;
+
+exports[`Signature forbids incorrect field syntax: no-double-comma 1`] = `"malformed signature string (missing \`=\` in field)"`;
+
+exports[`Signature forbids incorrect field syntax: no-leading-comma 1`] = `"malformed signature string (missing \`=\` in field)"`;
+
+exports[`Signature forbids incorrect field syntax: no-trailing-comma 1`] = `"malformed signature string (missing \`=\` in field)"`;
+
+exports[`Signature forbids subsecond precision for created 1`] = `"malformed signature string"`;
+
+exports[`Signature forbids whitespacing of fields 1`] = `"malformed signature string"`;

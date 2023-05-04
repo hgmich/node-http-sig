@@ -1,0 +1,35 @@
+{
+  "name": "@holmesmr/nest-http-sig",
+  "version": "0.1.0-alpha.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "test": "jest",
+    "build": "tsc -p .",
+    "fmt": "prettier -w 'src/**/*.ts'",
+    "typecheck": "tsc -p . --noEmit"
+  },
+  "prettier": "@private/local-config",
+  "author": "Michael Holmes <holmesmr@users.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@holmesmr/http-sig": "^0.1.0-alpha.0",
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0"
+  },
+  "peerDependencies": {
+    "@nestjs/platform-express": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^14.18.42",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.2.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}
