@@ -15,11 +15,11 @@
   "license": "MIT",
   "dependencies": {
     "@holmesmr/http-sig": "^0.1.1-alpha.0",
-    "@nestjs/common": "^9.0.0",
-    "@nestjs/core": "^9.0.0"
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0"
   },
   "peerDependencies": {
-    "@nestjs/platform-express": "^9.0.0"
+    "@nestjs/platform-express": "^10.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
