@@ -1,4 +1,4 @@
-import { MessageContext } from '../src/MessageContext'
+import { MessageContext } from '../../http-sig/src/MessageContext'
 
 const mockRequest = (method: string, path: string, headers: { [header: string]: string[] }) => ({
   requestTarget: { method, path },

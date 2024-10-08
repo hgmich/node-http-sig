@@ -1,4 +1,4 @@
-import { CREATED_SLACK, EXPIRES_SLACK, Signature } from '../src/Signature'
+import { CREATED_SLACK, EXPIRES_SLACK, Signature } from '../../http-sig/src/Signature'
 
 describe('Signature', () => {
   const lazySignature = (s: string) => () => Signature.fromHeader(s)
