@@ -5,6 +5,8 @@ node_modules/
 /packages/*/lib/
 .idea/
 *.iml
+.nx/
+
 # Devenv
 .devenv*
 devenv.local.nix
