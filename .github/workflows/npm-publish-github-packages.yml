@@ -31,6 +31,8 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm ci --install-links
+        env:
+          HUSKY_SKIP_INSTALL: "true"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
