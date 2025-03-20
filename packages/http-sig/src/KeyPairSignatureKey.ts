@@ -12,7 +12,7 @@ import {
 import { DigestFactory, SignatureKey } from './SignatureKey'
 import * as crypto from 'crypto'
 
-export type SignFactory = () => crypto.Signer
+export type SignFactory = () => crypto.Sign
 export type VerifyFactory = () => crypto.Verify
 
 const SIG_TO_NODE_KEY_TYPE: { [Value in KeyPairAlgorithm]: crypto.KeyType } = {
