@@ -1,6 +1,6 @@
 {
   "name": "@holmesmr/http-sig",
-  "version": "0.1.1-alpha.0",
+  "version": "0.2.0-alpha.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -26,5 +26,4 @@
     "typescript": "^5.0.3"
   },
   "gitHead": "790c7edb95d872f124fabcc46c9a1f36932dc14f"
-
 }
